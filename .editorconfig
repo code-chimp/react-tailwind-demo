@@ -2,11 +2,15 @@ root = true
 
 [*]
 charset = utf-8
+end_of_line = lf
+indent_size = 2
 indent_style = space
+insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{css,html,js,json,md,ps1,scss,sh,ts,tsx}]
-indent_size = 2
+[*.ts]
+quote_type = single
 
 [*.md]
+max_line_length = off
 trim_trailing_whitespace = false

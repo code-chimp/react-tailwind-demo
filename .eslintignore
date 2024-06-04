@@ -1,0 +1,6 @@
+docs/**
+**/*.snap
+**/*.d.ts
+postcss.config.js
+tailwind.config.js
+vite.config.ts

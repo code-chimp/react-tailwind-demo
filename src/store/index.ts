@@ -3,15 +3,15 @@ import { create } from 'zustand';
 import IContact from '@/@interfaces/IContact.ts';
 import { seedData } from '@/seedData.ts';
 
-type Store = {
+interface IStore {
   contacts: IContact[];
   addContact: (contact: Omit<IContact, 'id' | 'updatedAt'>) => void;
   updateContact: (contact: IContact) => void;
   deleteContact: (id: string) => void;
   loadContacts: () => Promise<void>;
-};
+}
 
-const useStore = create<Store>(set => ({
+const useStore = create<IStore>(set => ({
   contacts: [],
   addContact: contact =>
     set(state => {

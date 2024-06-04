@@ -29,8 +29,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "fix": "run-p fix:*",
+    "fix:styles": "stylelint \"src/**/*.css\" --fix",
+    "fix:format": "prettier --write .",
+    "lint": "run-p lint:*",
     "lint:ts": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:styles": "stylelint \"src/**/*.css\" --fix",
+    "lint:styles": "stylelint \"src/**/*.css\"",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -61,6 +65,7 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",

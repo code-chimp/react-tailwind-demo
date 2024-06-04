@@ -23,8 +23,8 @@ const Contacts: FC = () => {
                 <span>{contact.name}</span>
                 <span>{contact.email}</span>
                 <span>
-                  {contact.phone.mobile}
-                  {contact.phone.work ? contact.phone.work : null}
+                  {contact.phone.mobile}(m)
+                  {contact.phone.work ? ` ${contact.phone.work}(w)` : null}
                 </span>
               </div>
             </Link>
