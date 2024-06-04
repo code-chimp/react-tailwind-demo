@@ -1,11 +1,10 @@
 {
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
   "recommendations": [
+    "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "mikestead.dotenv",
     "youavbls.pretty-ts-errors",
-    "stylelint.vscode-stylelint",
-    "zixuanchen.vitest-explorer"
+    "stylelint.vscode-stylelint"
   ]
 }

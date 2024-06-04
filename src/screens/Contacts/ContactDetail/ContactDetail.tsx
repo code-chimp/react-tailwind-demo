@@ -34,23 +34,48 @@ const ContactDetail: FC = () => {
     navigate('edit', { relative: 'path' });
   }
 
-  return contact ? (
+  return (
     <div>
-      <img src={`/users/${contact.avatar}`} alt={contact.name} />
+      {contact ? (
+        <>
+          <img src={`/users/${contact.avatar}`} alt={`${contact.name}'s avatar`} />
 
-      <div>
-        <h1>{contact.name}</h1>
+          <div>
+            <h1>{contact.name}</h1>
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            <div>
+              <div>
+                <span>
+                  <a href={`tel:${contact.phone.mobile}`}>{contact.phone.mobile}</a> main
+                </span>
+                {contact.phone.work ? (
+                  <span>
+                    <a href={`tel:${contact.phone.work}`}>{contact.phone.work}</a> work
+                  </span>
+                ) : null}
+                <div>
+                  <h3>Notes:</h3>
+                  <p>{contact.notes}</p>
+                </div>
+              </div>
+              <div>
+                <span>{contact.address}</span>
+                <span>
+                  {contact.city}, {contact.state} {contact.postalCode}
+                </span>
+              </div>
+            </div>
 
-        <div>
-          <button onClick={handleEditClick}>Edit</button>
-          <button onClick={handleDeleteClick}>Delete</button>
-          <button onClick={handleBackClick}>Back</button>
-        </div>
-      </div>
-    </div>
-  ) : (
-    <div>
-      <p>Loading...</p>
+            <div>
+              <button onClick={handleEditClick}>Edit</button>
+              <button onClick={handleDeleteClick}>Delete</button>
+              <button onClick={handleBackClick}>Back</button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };

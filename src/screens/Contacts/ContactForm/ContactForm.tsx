@@ -64,6 +64,8 @@ const ContactForm: FC = () => {
         setExistingContact(existing);
         setLoading(false);
       }
+    } else {
+      setLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -130,13 +132,21 @@ const ContactForm: FC = () => {
     navigate('..', { relative: 'path' });
   }
 
-  const { dirty, errors, getFieldProps, handleSubmit, isValid, touched, values } =
-    useFormik<IContactForm>({
-      initialValues,
-      enableReinitialize: true,
-      validationSchema,
-      onSubmit: handleFormSubmit,
-    });
+  const {
+    dirty,
+    errors,
+    getFieldProps,
+    handleSubmit,
+    isSubmitting,
+    isValid,
+    touched,
+    values,
+  } = useFormik<IContactForm>({
+    initialValues,
+    enableReinitialize: true,
+    validationSchema,
+    onSubmit: handleFormSubmit,
+  });
 
   return loading ? (
     <div>
@@ -144,91 +154,100 @@ const ContactForm: FC = () => {
     </div>
   ) : (
     <div>
-      <h1>Contact Form</h1>
+      <h1>{params.id ? `Updating: ${existingContact?.name}` : 'New Contact'}</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" required {...getFieldProps('name')} />
-          {touched.name && errors.name ? <span>{errors.name}</span> : null}
-        </div>
-        <div>
-          <img src={`/users/${values.avatar}`} alt="Avatar" />
+          <div>
+            <label htmlFor="name">Name:</label>
+            <input type="text" id="name" required {...getFieldProps('name')} />
+            {touched.name && errors.name ? <span>{errors.name}</span> : null}
+          </div>
           <div>
             <label htmlFor="avatar">Avatar:</label>
             <input type="text" id="avatar" required {...getFieldProps('avatar')} />
             {touched.avatar && errors.avatar ? <span>{errors.avatar}</span> : null}
           </div>
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" required {...getFieldProps('email')} />
-          {touched.email && errors.email ? <span>{errors.email}</span> : null}
-        </div>
-        <fieldset>
-          <legend>Phone Numbers</legend>
           <div>
-            <label htmlFor="mobilePhone">Mobile Phone:</label>
-            <input
-              type="tel"
-              id="mobilePhone"
-              placeholder="(###) ###-####"
-              required
-              {...getFieldProps('mobilePhone')}
-            />
-            {touched.mobilePhone && errors.mobilePhone ? (
-              <span>{errors.mobilePhone}</span>
-            ) : null}
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" required {...getFieldProps('email')} />
+            {touched.email && errors.email ? <span>{errors.email}</span> : null}
           </div>
+          <fieldset>
+            <legend>Phone Numbers</legend>
+            <div>
+              <label htmlFor="mobilePhone">Mobile Phone:</label>
+              <input
+                type="tel"
+                id="mobilePhone"
+                placeholder="(###) ###-####"
+                required
+                {...getFieldProps('mobilePhone')}
+              />
+              {touched.mobilePhone && errors.mobilePhone ? (
+                <span>{errors.mobilePhone}</span>
+              ) : null}
+            </div>
+            <div>
+              <label htmlFor="workPhone">Work Phone:</label>
+              <input
+                type="tel"
+                id="workPhone"
+                placeholder="(###) ###-####"
+                {...getFieldProps('workPhone')}
+              />
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Address</legend>
+            <div>
+              <label htmlFor="address">Street:</label>
+              <input type="text" id="address" required {...getFieldProps('address')} />
+              {touched.address && errors.address ? <span>{errors.address}</span> : null}
+            </div>
+            <div>
+              <label htmlFor="city">City:</label>
+              <input type="text" id="city" required {...getFieldProps('city')} />
+              {touched.city && errors.city ? <span>{errors.city}</span> : null}
+            </div>
+            <div>
+              <label htmlFor="state">State:</label>
+              <input type="text" id="state" required {...getFieldProps('state')} />
+              {touched.state && errors.state ? <span>{errors.state}</span> : null}
+            </div>
+            <div>
+              <label htmlFor="postalCode">Zip:</label>
+              <input
+                type="text"
+                id="postalCode"
+                placeholder="55555"
+                required
+                {...getFieldProps('postalCode')}
+              />
+              {touched.postalCode && errors.postalCode ? (
+                <span>{errors.postalCode}</span>
+              ) : null}
+            </div>
+          </fieldset>
           <div>
-            <label htmlFor="workPhone">Work Phone:</label>
-            <input
-              type="tel"
-              id="workPhone"
-              placeholder="(###) ###-####"
-              {...getFieldProps('workPhone')}
-            />
+            <label htmlFor="notes">Notes:</label>
+            <textarea id="notes" {...getFieldProps('notes')} />
           </div>
-        </fieldset>
-        <fieldset>
-          <legend>Address</legend>
-          <div>
-            <label htmlFor="address">Street:</label>
-            <input type="text" id="address" required {...getFieldProps('address')} />
-            {touched.address && errors.address ? <span>{errors.address}</span> : null}
-          </div>
-          <div>
-            <label htmlFor="city">City:</label>
-            <input type="text" id="city" required {...getFieldProps('city')} />
-            {touched.city && errors.city ? <span>{errors.city}</span> : null}
-          </div>
-          <div>
-            <label htmlFor="state">State:</label>
-            <input type="text" id="state" required {...getFieldProps('state')} />
-            {touched.state && errors.state ? <span>{errors.state}</span> : null}
-          </div>
-          <div>
-            <label htmlFor="postalCode">Zip:</label>
-            <input
-              type="text"
-              id="postalCode"
-              placeholder="55555"
-              required
-              {...getFieldProps('postalCode')}
-            />
-            {touched.postalCode && errors.postalCode ? <span>{errors.postalCode}</span> : null}
-          </div>
-        </fieldset>
-        <div>
-          <label htmlFor="notes">Notes:</label>
-          <textarea id="notes" {...getFieldProps('notes')} />
-        </div>
 
-        <button type="submit" disabled={dirty && !isValid}>
-          {params.id ? 'Update' : 'Add'} Contact
-        </button>
-        <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button>
+          <div>
+            <button type="submit" disabled={isSubmitting || !dirty || !isValid}>
+              {params.id ? 'Update' : 'Add'} Contact
+            </button>
+            <button type="button" onClick={handleCancelClick}>
+              Cancel
+            </button>
+          </div>
+        </div>
+        <div>
+          <figure>
+            <img src={`/users/${values.avatar}`} alt="Avatar" />
+            <figcaption>Avatar preview</figcaption>
+          </figure>
+        </div>
       </form>
     </div>
   );

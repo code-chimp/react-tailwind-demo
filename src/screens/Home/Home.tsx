@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 const Home: FC = () => {
   return (
-    <div>
+    <article>
       <h1>Fun with TailwindCSS</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consectetur culpa
@@ -14,7 +14,7 @@ const Home: FC = () => {
         ducimus earum eveniet fuga id illum ipsam iusto maiores molestias nam nemo praesentium
         quia repellat sed sint soluta suscipit tenetur vitae.
       </p>
-    </div>
+    </article>
   );
 };
 

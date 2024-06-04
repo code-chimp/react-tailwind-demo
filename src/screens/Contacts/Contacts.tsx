@@ -18,8 +18,15 @@ const Contacts: FC = () => {
         {store.contacts.map(contact => (
           <li key={contact.id}>
             <Link to={`/contacts/${contact.id}`}>
-              <img src={`/users/${contact.avatar}`} alt={contact.name} width="50px" />{' '}
-              {contact.name}
+              <img src={`/users/${contact.avatar}`} alt={contact.name} width="50px" />
+              <div>
+                <span>{contact.name}</span>
+                <span>{contact.email}</span>
+                <span>
+                  {contact.phone.mobile}
+                  {contact.phone.work ? contact.phone.work : null}
+                </span>
+              </div>
             </Link>
           </li>
         ))}

@@ -25,7 +25,6 @@ export const seedData: IContact[] = [
     email: 'Celestine_McKenzie@hotmail.com',
     phone: {
       mobile: '699-674-2585 x4560',
-      work: '560-605-7140 x5041',
     },
     address: '621 Lonzo Skyway',
     city: 'Eltonmouth',
