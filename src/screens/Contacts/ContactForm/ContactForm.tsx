@@ -153,28 +153,28 @@ const ContactForm: FC = () => {
       <p>Loading form...</p>
     </div>
   ) : (
-    <div>
+    <div className="p-2">
       <h1>{params.id ? `Updating: ${existingContact?.name}` : 'New Contact'}</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <div>
+      <form className="flex" onSubmit={handleSubmit}>
+        <div className="w-2/3">
+          <div className="mb-1 flex flex-col">
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" required {...getFieldProps('name')} />
             {touched.name && errors.name ? <span>{errors.name}</span> : null}
           </div>
-          <div>
+          <div className="mb-1 flex flex-col">
             <label htmlFor="avatar">Avatar:</label>
             <input type="text" id="avatar" required {...getFieldProps('avatar')} />
             {touched.avatar && errors.avatar ? <span>{errors.avatar}</span> : null}
           </div>
-          <div>
+          <div className="mb-1 flex flex-col">
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" required {...getFieldProps('email')} />
             {touched.email && errors.email ? <span>{errors.email}</span> : null}
           </div>
-          <fieldset>
-            <legend>Phone Numbers</legend>
-            <div>
+          <fieldset className="mb-2 rounded-md border border-gray-400 px-2 py-1">
+            <legend className="px-1 font-medium">Phone Numbers</legend>
+            <div className="mb-1 flex flex-col">
               <label htmlFor="mobilePhone">Mobile Phone:</label>
               <input
                 type="tel"
@@ -187,7 +187,7 @@ const ContactForm: FC = () => {
                 <span>{errors.mobilePhone}</span>
               ) : null}
             </div>
-            <div>
+            <div className="mb-1 flex flex-col">
               <label htmlFor="workPhone">Work Phone:</label>
               <input
                 type="tel"
@@ -197,24 +197,24 @@ const ContactForm: FC = () => {
               />
             </div>
           </fieldset>
-          <fieldset>
-            <legend>Address</legend>
-            <div>
+          <fieldset className="mb-2 rounded-md border border-gray-400 px-2 py-1">
+            <legend className="px-1 font-medium">Address</legend>
+            <div className="mb-1 flex flex-col">
               <label htmlFor="address">Street:</label>
               <input type="text" id="address" required {...getFieldProps('address')} />
               {touched.address && errors.address ? <span>{errors.address}</span> : null}
             </div>
-            <div>
+            <div className="mb-1 flex flex-col">
               <label htmlFor="city">City:</label>
               <input type="text" id="city" required {...getFieldProps('city')} />
               {touched.city && errors.city ? <span>{errors.city}</span> : null}
             </div>
-            <div>
+            <div className="mb-1 flex flex-col">
               <label htmlFor="state">State:</label>
               <input type="text" id="state" required {...getFieldProps('state')} />
               {touched.state && errors.state ? <span>{errors.state}</span> : null}
             </div>
-            <div>
+            <div className="mb-1 flex flex-col">
               <label htmlFor="postalCode">Zip:</label>
               <input
                 type="text"
@@ -228,23 +228,30 @@ const ContactForm: FC = () => {
               ) : null}
             </div>
           </fieldset>
-          <div>
+          <div className="mb-1 flex flex-col">
             <label htmlFor="notes">Notes:</label>
             <textarea id="notes" {...getFieldProps('notes')} />
           </div>
 
-          <div>
-            <button type="submit" disabled={isSubmitting || !dirty || !isValid}>
+          <div className="flex justify-between py-2">
+            <button
+              type="submit"
+              className="btn-success"
+              disabled={isSubmitting || !dirty || !isValid}>
               {params.id ? 'Update' : 'Add'} Contact
             </button>
-            <button type="button" onClick={handleCancelClick}>
+            <button type="button" className="btn-danger" onClick={handleCancelClick}>
               Cancel
             </button>
           </div>
         </div>
-        <div>
-          <figure>
-            <img src={`/users/${values.avatar}`} alt="Avatar" />
+        <div className="w-1/3">
+          <figure className="text-center">
+            <img
+              className="mx-auto max-h-48 rounded"
+              src={`/users/${values.avatar}`}
+              alt="Avatar"
+            />
             <figcaption>Avatar preview</figcaption>
           </figure>
         </div>

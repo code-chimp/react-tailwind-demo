@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className="flex w-full justify-between border-t p-4">
       <h3>
         <Link to="/">Tailwind Demo</Link> &copy; {new Date().getFullYear()}
       </h3>

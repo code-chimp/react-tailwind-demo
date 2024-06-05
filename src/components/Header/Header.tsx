@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 
 const Header: FC = () => {
   return (
-    <header>
+    <header className="flex w-full justify-between border-b p-4">
       <h1>
         <Link to="/">Tailwind Demo</Link>
       </h1>
       <nav>
-        <ul>
-          <li>
+        <ul className="flex">
+          <li className="ms-4">
             <Link to="/contacts">Contacts</Link>
           </li>
-          <li>
+          <li className="ms-4">
             <Link to="/about">About</Link>
           </li>
         </ul>

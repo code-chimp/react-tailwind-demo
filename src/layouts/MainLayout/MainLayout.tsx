@@ -15,9 +15,11 @@ const MainLayout: FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex h-screen flex-col overflow-hidden">
       <Header />
-      <main>{loaded ? <Outlet /> : <p>Loading...</p>}</main>
+      <main className="flex-1 overflow-y-auto p-4">
+        {loaded ? <Outlet /> : <p>Loading...</p>}
+      </main>
       <Footer />
     </div>
   );

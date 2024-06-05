@@ -35,16 +35,20 @@ const ContactDetail: FC = () => {
   }
 
   return (
-    <div>
+    <div className="mx-auto flex w-full max-w-[65rem] rounded-md border p-1">
       {contact ? (
         <>
-          <img src={`/users/${contact.avatar}`} alt={`${contact.name}'s avatar`} />
+          <img
+            className="max-h-52 rounded-md"
+            src={`/users/${contact.avatar}`}
+            alt={`${contact.name}'s avatar`}
+          />
 
-          <div>
+          <div className="flex flex-grow flex-col p-1">
             <h1>{contact.name}</h1>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
-            <div>
-              <div>
+            <div className="flex">
+              <div className="flex w-1/2 flex-col">
                 <span>
                   <a href={`tel:${contact.phone.mobile}`}>{contact.phone.mobile}</a> main
                 </span>
@@ -53,12 +57,12 @@ const ContactDetail: FC = () => {
                     <a href={`tel:${contact.phone.work}`}>{contact.phone.work}</a> work
                   </span>
                 ) : null}
-                <div>
+                <div className="min-h-[60px] p-1">
                   <h3>Notes:</h3>
                   <p>{contact.notes}</p>
                 </div>
               </div>
-              <div>
+              <div className="flex w-1/2 flex-col">
                 <span>{contact.address}</span>
                 <span>
                   {contact.city}, {contact.state} {contact.postalCode}
@@ -66,9 +70,13 @@ const ContactDetail: FC = () => {
               </div>
             </div>
 
-            <div>
-              <button onClick={handleEditClick}>Edit</button>
-              <button onClick={handleDeleteClick}>Delete</button>
+            <div className="flex justify-end">
+              <button className="btn-primary" onClick={handleEditClick}>
+                Edit
+              </button>
+              <button className="btn-danger" onClick={handleDeleteClick}>
+                Delete
+              </button>
               <button onClick={handleBackClick}>Back</button>
             </div>
           </div>
