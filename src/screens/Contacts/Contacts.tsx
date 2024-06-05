@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import useStore from '@/store';
+import styles from './Contacts.module.css';
 
 const Contacts: FC = () => {
   const store = useStore();
@@ -12,20 +13,14 @@ const Contacts: FC = () => {
   }
 
   return (
-    <div className="mx-auto w-11/12">
+    <div className={styles.container}>
       <h1>Contacts</h1>
       <ul>
         {store.contacts.map(contact => (
           <li key={contact.id}>
-            <Link
-              to={`/contacts/${contact.id}`}
-              className="mb-2 flex rounded-md border p-1 hover:shadow-xl">
-              <img
-                className="w-16 rounded-full"
-                src={`/users/${contact.avatar}`}
-                alt={contact.name}
-              />
-              <div className="ms-1 flex flex-col px-2">
+            <Link to={`/contacts/${contact.id}`}>
+              <img src={`/users/${contact.avatar}`} alt={contact.name} />
+              <div>
                 <span>{contact.name}</span>
                 <span>{contact.email}</span>
                 <span>

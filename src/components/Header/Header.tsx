@@ -1,18 +1,20 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
+import styles from './Header.module.css';
+
 const Header: FC = () => {
   return (
-    <header className="flex w-full justify-between border-b p-4">
+    <header className={styles.container}>
       <h1>
         <Link to="/">Tailwind Demo</Link>
       </h1>
       <nav>
-        <ul className="flex">
-          <li className="ms-4">
+        <ul>
+          <li>
             <Link to="/contacts">Contacts</Link>
           </li>
-          <li className="ms-4">
+          <li>
             <Link to="/about">About</Link>
           </li>
         </ul>

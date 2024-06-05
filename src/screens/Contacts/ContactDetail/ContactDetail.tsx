@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import IContact from '@/@interfaces/IContact.ts';
 import useStore from '@/store';
+import styles from './ContactDetail.module.css';
 
 const ContactDetail: FC = () => {
   const navigate = useNavigate();
@@ -35,20 +36,16 @@ const ContactDetail: FC = () => {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-[65rem] rounded-md border p-1">
+    <div className={styles.container}>
       {contact ? (
         <>
-          <img
-            className="max-h-52 rounded-md"
-            src={`/users/${contact.avatar}`}
-            alt={`${contact.name}'s avatar`}
-          />
+          <img src={`/users/${contact.avatar}`} alt={`${contact.name}'s avatar`} />
 
-          <div className="flex flex-grow flex-col p-1">
+          <div className={styles.infoContainer}>
             <h1>{contact.name}</h1>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
-            <div className="flex">
-              <div className="flex w-1/2 flex-col">
+            <div className={styles.details}>
+              <div className={styles.column}>
                 <span>
                   <a href={`tel:${contact.phone.mobile}`}>{contact.phone.mobile}</a> main
                 </span>
@@ -62,7 +59,7 @@ const ContactDetail: FC = () => {
                   <p>{contact.notes}</p>
                 </div>
               </div>
-              <div className="flex w-1/2 flex-col">
+              <div className={styles.column}>
                 <span>{contact.address}</span>
                 <span>
                   {contact.city}, {contact.state} {contact.postalCode}
@@ -70,7 +67,7 @@ const ContactDetail: FC = () => {
               </div>
             </div>
 
-            <div className="flex justify-end">
+            <div className={styles.buttons}>
               <button className="btn-primary" onClick={handleEditClick}>
                 Edit
               </button>

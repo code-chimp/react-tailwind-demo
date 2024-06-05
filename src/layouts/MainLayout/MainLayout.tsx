@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import useStore from '@/store';
+import styles from './MainLayout.module.css';
 
 const MainLayout: FC = () => {
   const store = useStore();
@@ -15,11 +16,9 @@ const MainLayout: FC = () => {
   }, []);
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden">
+    <div className={styles.container}>
       <Header />
-      <main className="flex-1 overflow-y-auto p-4">
-        {loaded ? <Outlet /> : <p>Loading...</p>}
-      </main>
+      <main>{loaded ? <Outlet /> : <p>Loading...</p>}</main>
       <Footer />
     </div>
   );
