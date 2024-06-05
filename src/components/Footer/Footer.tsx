@@ -6,7 +6,7 @@ export default function Footer() {
       <h3>
         <Link to="/">Tailwind Demo</Link> &copy; {new Date().getFullYear()}
       </h3>
-      <nav>
+      <nav className="block">
         <ul>
           <li>
             <Link to="/contacts">Contacts</Link>
