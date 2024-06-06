@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import useStore from '@/store';
 import styles from './Contacts.module.css';
+import Button from '@/components/ui/Button';
 
 const Contacts: FC = () => {
   const store = useStore();
@@ -32,9 +33,9 @@ const Contacts: FC = () => {
           </li>
         ))}
       </ul>
-      <button className="btn-success" onClick={handleAddClick}>
+      <Button variant="success" onClick={handleAddClick}>
         Add Contact
-      </button>
+      </Button>
     </div>
   );
 };

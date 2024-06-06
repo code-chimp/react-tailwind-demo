@@ -6,6 +6,7 @@ import useStore from '@/store';
 import IContact from '@/@interfaces/IContact.ts';
 import validationSchema from './validationSchema.ts';
 import styles from './ContactForm.module.css';
+import Button from '@/components/ui/Button';
 
 interface IContactForm {
   name: string;
@@ -234,16 +235,16 @@ const ContactForm: FC = () => {
             <textarea id="notes" {...getFieldProps('notes')} />
           </div>
 
-          <div className={styles.buttons0}>
-            <button
+          <div className={styles.buttons}>
+            <Button
               type="submit"
-              className="btn-success"
+              variant="success"
               disabled={isSubmitting || !dirty || !isValid}>
               {params.id ? 'Update' : 'Add'} Contact
-            </button>
-            <button type="button" className="btn-danger" onClick={handleCancelClick}>
+            </Button>
+            <Button type="button" variant="danger" onClick={handleCancelClick}>
               Cancel
-            </button>
+            </Button>
           </div>
         </div>
 

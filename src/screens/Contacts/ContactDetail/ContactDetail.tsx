@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import IContact from '@/@interfaces/IContact.ts';
 import useStore from '@/store';
 import styles from './ContactDetail.module.css';
+import Button from '@/components/ui/Button';
 
 const ContactDetail: FC = () => {
   const navigate = useNavigate();
@@ -68,13 +69,15 @@ const ContactDetail: FC = () => {
             </div>
 
             <div className={styles.buttons}>
-              <button className="btn-primary" onClick={handleEditClick}>
+              <Button variant="primary" onClick={handleEditClick}>
                 Edit
-              </button>
-              <button className="btn-danger" onClick={handleDeleteClick}>
+              </Button>
+              <Button variant="danger" onClick={handleDeleteClick}>
                 Delete
-              </button>
-              <button onClick={handleBackClick}>Back</button>
+              </Button>
+              <Button variant="secondary" onClick={handleBackClick}>
+                Back
+              </Button>
             </div>
           </div>
         </>
